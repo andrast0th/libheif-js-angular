@@ -57,3 +57,51 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## HEIC/HEIF Sample Files
+
+You can find sample HEIC/HEIF files for testing here:
+[https://heic.digital/samples/](https://heic.digital/samples/)
+
+## Project Structure
+
+- `src/components/` — UI components
+- `src/services/` — Angular services (decoding, monitor, etc.)
+- `src/workers/` — Web worker scripts
+- `src/utils/` — Utility functions
+
+## Decoding Variants
+
+This app supports multiple HEIF decode variants:
+
+- **Main Thread (asm.js):** Synchronous decode, blocks JS thread
+- **WASM Thread:** Synchronous decode using WebAssembly
+- **Worker (asm.js):** Background decode using module worker
+
+Switch between variants using the tabs in the UI.
+
+## Thread Monitor
+
+A built-in monitor shows JS main thread responsiveness during decoding. Watch for spikes or freezes when running main-thread decode.
+
+## File Info Display
+
+After decoding, the app shows:
+
+- Original file size
+- Converted PNG size
+- Conversion time
+
+## Useful Commands
+
+- `ng serve` — Start dev server
+- `ng build` — Build for production
+- `ng test` — Run unit tests
+
+## .gitignore
+
+See `.gitignore` for excluded files and folders (node_modules, build outputs, bundles, etc).
+
+## License
+
+MIT
