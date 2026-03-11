@@ -1,9 +1,12 @@
-<div class="samples-link" style="margin-bottom: 1em">
-  <a href="https://heic.digital/samples/" target="_blank" rel="noopener">HEIC/HEIF sample files</a>
-</div>
-
 <main>
-  <app-thread-monitor />
+  <div style="display: flex; align-items: center; gap: 1em; margin-bottom: 1em">
+    <app-thread-monitor />
+    <div class="samples-link">
+      <a href="https://heic.digital/samples/" target="_blank" rel="noopener"
+        >HEIC/HEIF sample files</a
+      >
+    </div>
+  </div>
 
   <div class="tabs">
     @for (tab of tabs; track tab.id) {

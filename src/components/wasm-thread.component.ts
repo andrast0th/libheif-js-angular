@@ -114,7 +114,7 @@ export class WasmThreadComponent implements OnDestroy {
     const oc = new OffscreenCanvas(img.width, img.height);
     const ctx = oc.getContext('2d')!;
     ctx.putImageData(new ImageData(new Uint8ClampedArray(img.data), img.width, img.height), 0, 0);
-    const blob = await oc.convertToBlob({ type: 'image/png' });
+    const blob = await oc.convertToBlob({ type: 'image/jpeg', quality: 0.92 });
 
     this.revokeCurrentUrl();
     const url = URL.createObjectURL(blob);
