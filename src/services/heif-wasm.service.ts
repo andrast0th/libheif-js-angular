@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import libheif from 'libheif-js/libheif-wasm/libheif-bundle.mjs';
-import { HeifImage } from './heif.service';
+import { HeifImage } from '../util/model';
 
 @Injectable({ providedIn: 'root' })
 export class HeifWasmService {
   async decode(buffer: ArrayBuffer): Promise<HeifImage[]> {
+    
+    const libheif = (await import('libheif-js/libheif-wasm/libheif-bundle.mjs')).default;
     const { HeifDecoder } = libheif();
     const decoder = new HeifDecoder();
     const data = decoder.decode(new Uint8Array(buffer));

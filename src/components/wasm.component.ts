@@ -1,9 +1,10 @@
 import { Component, OnDestroy, signal } from '@angular/core';
-import { HeifImage, HeifService } from '../services/heif.service';
+import { HeifWasmService } from '../services/heif-wasm.service';
 import { ThreadMonitorService } from '../services/thread-monitor.service';
+import { HeifImage } from '../util/model';
 
 @Component({
-  selector: 'app-main-thread',
+  selector: 'app-wasm',
   standalone: true,
   template: `
     <label class="file-label">
@@ -48,7 +49,7 @@ import { ThreadMonitorService } from '../services/thread-monitor.service';
     }
   `,
 })
-export class MainThreadComponent implements OnDestroy {
+export class WasmComponent implements OnDestroy {
   status = signal<string>('Pick a .heic file to decode it.');
   loading = signal(false);
   images = signal<HeifImage[]>([]);
@@ -63,7 +64,7 @@ export class MainThreadComponent implements OnDestroy {
   private currentUrl: string | null = null;
 
   constructor(
-    private heif: HeifService,
+    private heif: HeifWasmService,
     private monitor: ThreadMonitorService,
   ) {}
 
@@ -82,6 +83,7 @@ export class MainThreadComponent implements OnDestroy {
     this.elapsedMs.set(null);
     this.monitor.reset();
     input.value = '';
+    this.monitor.reset();
     this.revokeCurrentUrl();
 
     const t0 = performance.now();

@@ -18,19 +18,19 @@
 
   <div class="tab-panel">
     @switch (activeTab()) {
-      @case ('main-thread') {
+      @case ('asm') {
         <p class="tab-description">
           Synchronous asm.js decode running on the JS main thread — watch the monitor freeze during
           decode.
         </p>
-        <app-main-thread />
+        <app-asm />
       }
-      @case ('wasm-thread') {
+      @case ('wasm') {
         <p class="tab-description">
           Synchronous WASM decode running on the JS main thread — compare freeze duration with
           asm.js.
         </p>
-        <app-wasm-thread />
+        <app-wasm />
       }
       @case ('asm-worker') {
         <p class="tab-description">

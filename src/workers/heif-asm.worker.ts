@@ -1,11 +1,11 @@
 /// <reference lib="webworker" />
-import libheif from '../libheif-asmjs.bundle.js';
 
 let lib: any = null;
 
 async function getLib(): Promise<any> {
   if (!lib) {
-    const LibHeif = (libheif as any).default ?? libheif;
+    const module = await import('../libheif-asmjs.bundle.js');
+    const LibHeif = (module as any).default ?? module;
     lib = typeof LibHeif === 'function' ? LibHeif() : LibHeif;
   }
   return lib;

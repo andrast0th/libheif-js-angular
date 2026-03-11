@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { AsmWorkerComponent } from '../components/asm-worker.component';
-import { MainThreadComponent } from '../components/main-thread.component';
+import { MainThreadComponent } from '../components/asm.component';
 import { ThreadMonitorComponent } from '../components/thread-monitor.component';
-import { WasmThreadComponent } from '../components/wasm-thread.component';
+import { WasmComponent } from '../components/wasm.component';
 
-export type TabId = 'main-thread' | 'wasm-thread' | 'asm-worker';
+export type TabId = 'asm' | 'wasm' | 'asm-worker';
 
 export interface Tab {
   id: TabId;
@@ -14,19 +14,19 @@ export interface Tab {
 
 @Component({
   selector: 'app-root',
-  imports: [ThreadMonitorComponent, MainThreadComponent, WasmThreadComponent, AsmWorkerComponent],
+  imports: [ThreadMonitorComponent, MainThreadComponent, WasmComponent, AsmWorkerComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App {
   readonly tabs: Tab[] = [
     {
-      id: 'main-thread',
+      id: 'asm',
       label: 'asm.js — main thread',
       description: 'Synchronous decode on the JS main thread',
     },
     {
-      id: 'wasm-thread',
+      id: 'wasm',
       label: 'WASM — main thread',
       description: 'Synchronous WASM decode on the JS main thread',
     },
@@ -37,7 +37,7 @@ export class App {
     },
   ];
 
-  activeTab = signal<TabId>('main-thread');
+  activeTab = signal<TabId>('asm');
 
   setTab(id: TabId) {
     this.activeTab.set(id);

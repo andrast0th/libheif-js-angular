@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
+import { HeifImage } from '../util/model';
 import type { WorkerResult } from '../workers/heif-asm.worker';
-import { HeifImage } from './heif.service';
 
 @Injectable({ providedIn: 'root' })
 export class HeifAsmWorkerService implements OnDestroy {

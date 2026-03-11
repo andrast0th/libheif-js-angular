@@ -1,7 +1,7 @@
 import { Component, OnDestroy, signal } from '@angular/core';
 import { HeifAsmWorkerService } from '../services/heif-asm-worker.service';
-import { HeifImage } from '../services/heif.service';
 import { ThreadMonitorService } from '../services/thread-monitor.service';
+import { HeifImage } from '../util/model';
 
 @Component({
   selector: 'app-asm-worker',

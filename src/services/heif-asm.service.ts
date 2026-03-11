@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
-
-export interface HeifImage {
-  width: number;
-  height: number;
-  data: Uint8ClampedArray;
-}
+import { HeifImage } from '../util/model.js';
 
 @Injectable({ providedIn: 'root' })
-export class HeifService {
+export class HeifAsmService {
   private lib: any = null;
 
   private async getLib(): Promise<any> {
